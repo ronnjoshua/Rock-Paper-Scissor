@@ -5,12 +5,22 @@ let computerChoiceToStr = " ";
 getComputerChoice();
 playRound();
 
+
 function playRound(){
 alert("Do you want to play another round?");
 let againOrExit = prompt("Yes or No? ");
-    if(againOrExit.toLowerCase() === "yes"){
-
+    while(againOrExit.toLowerCase() === "yes"){
+        getComputerChoice(); 
+        alert("Do you want to play another round?");
+        let againOrExit = prompt("Yes or No? ");
     }
+        if(againOrExit.toLowerCase() === "no"){
+            alert("Thank you for playing!");
+        }
+        else if(againOrExit.toLowerCase() !== "yes" || againOrExit.toLowerCase !== "no"){
+            alert("Not a valid option. pick yes or no only.")
+            playRound();
+        }
 }
 
 function getComputerChoice(){
@@ -30,6 +40,9 @@ function getComputerChoice(){
             result = "loser";
             console.log("lose");
         }
+        else{
+            result = "not a valid option, you lose";
+        }
     }
 
     else if(computerChoice > 1/3 && computerChoice < 2/3){
@@ -47,6 +60,9 @@ function getComputerChoice(){
             result = "winner";
             console.log("win");
         }
+        else{
+            result = "not a valid option, you lose";
+        }
     }
     else if(computerChoice >= 2/3){
         computerChoiceToStr = "scissor";
@@ -62,6 +78,9 @@ function getComputerChoice(){
         else if(playerChoice.toLowerCase() === "scissor"){
             result = "Draw";
             console.log("draw");
+        }
+        else{
+            result = "not a valid option, you lose";
         }
     }
     alert(`"Computer picked ${computerChoiceToStr}. You picked ${playerChoice}. ${result}`);
