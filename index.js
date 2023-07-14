@@ -9,19 +9,20 @@ playRound();
 function playRound(){
 alert("Do you want to play another round?");
 let againOrExit = prompt("Yes or No? ");
-    while(againOrExit.toLowerCase() === "yes"){
-        getComputerChoice(); 
-        alert("Do you want to play another round?");
-        let againOrExit = prompt("Yes or No? ");
+    if(againOrExit.toLowerCase() === "yes"){
+        getComputerChoice();
+        playRound(); 
     }
-        if(againOrExit.toLowerCase() === "no"){
-            alert("Thank you for playing!");
-        }
-        else if(againOrExit.toLowerCase() !== "yes" || againOrExit.toLowerCase !== "no"){
-            alert("Not a valid option. pick yes or no only.")
-            playRound();
-        }
+    else if(againOrExit.toLowerCase() === "no"){
+        alert("Thank you for playing, see you again next time!");
+    } 
+    else if(againOrExit.toLowerCase() !== "yes" && againOrExit.toLowerCase !== "no"){
+        alert("Not a valid option. pick yes or no only.");
+        playRound();
+    }
+    
 }
+
 
 function getComputerChoice(){
     const playerChoice = prompt("Please pick rock, paper or scissor: ");
@@ -30,7 +31,7 @@ function getComputerChoice(){
         computerChoiceToStr = "rock";
         if(playerChoice.toLowerCase() === "rock"){
             result = "draw";
-            console.log("draw")
+            console.log("draw");
         }
         else if(playerChoice.toLowerCase() === "paper"){
             result = "winner";
@@ -50,7 +51,7 @@ function getComputerChoice(){
         console.log("PAPER");
         if(playerChoice.toLowerCase() === "rock"){
             result = "loser";
-            console.log("lose")
+            console.log("lose");
         }
         else if(playerChoice.toLowerCase() === "paper"){
             result = "draw";
@@ -69,7 +70,7 @@ function getComputerChoice(){
         console.log("SCISSOR");
         if(playerChoice.toLowerCase() === "rock"){
             result = "winner";
-            console.log("win")
+            console.log("win");
         }
         else if(playerChoice.toLowerCase() === "paper"){
             result = "Loser";
