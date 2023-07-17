@@ -1,10 +1,13 @@
-const computerChoice = Math.random();
 let result = " ";
 let computerChoiceToStr = " ";
+let computerScore = 0;
+let playerScore = 0;
+let drawScore = 0;
+let sumOfRounds = 0;
+let bestOfRounds = rounds();
 
+rounds();
 getComputerChoice();
-playRound();
-
 
 function playRound(){
 alert("Do you want to play another round?");
@@ -23,10 +26,14 @@ let againOrExit = prompt("Yes or No? ");
     
 }
 
+//Get random choice of computer 
 
 function getComputerChoice(){
+
+
     const playerChoice = prompt("Please pick rock, paper or scissor: ");
-    console.log(computerChoice);
+    const computerChoice = Math.random();
+    
     if(computerChoice <= 1/3){
         computerChoiceToStr = "rock";
         if(playerChoice.toLowerCase() === "rock"){
@@ -44,6 +51,7 @@ function getComputerChoice(){
         else{
             result = "not a valid option, you lose";
         }
+
     }
 
     else if(computerChoice > 1/3 && computerChoice < 2/3){
@@ -84,8 +92,60 @@ function getComputerChoice(){
             result = "not a valid option, you lose";
         }
     }
-    alert(`"Computer picked ${computerChoiceToStr}. You picked ${playerChoice}. ${result}`);
+   
+    alert(`"Computer picked ${computerChoiceToStr}. You picked ${playerChoice}. ${result}`); 
+
+    if(result.toLowerCase() === "winner"){
+        playerScore++;
+
+    }
+    else if(result.toLowerCase() === "loser"){
+        computerScore++;
+    }
+    else if(result.toLowerCase() === "draw"){
+        drawScore++
+    }
+    else if(result.toString()){
+        computerScore++
+    }
+    sumOfRounds = playerScore + computerScore;
+    console.log(playerScore);
+    console.log(computerScore);
+    console.log(drawScore);
+    console.log(sumOfRounds);
+    if(sumOfRounds == bestOfRounds && (computerScore > playerScore)){
+        console.log("okay.");
+    }
+    getComputerChoice();
 }
+
+
+function rounds(){
+    let bestOf = parseInt(prompt("How many rounds do you want to play? ")); 
+    if(bestOf%2 !=0 && bestOf >= 3){
+        console.log(`Best of ${bestOf} rounds`);
+    }
+    else if(bestOf%2 == 0){
+        console.log("Rounds should be greater than 3.")
+        rounds();
+    }
+    else if(bestOf < 3){
+        console.log("Rounds should be greater than 3.")
+        rounds();
+    }
+    else if(bestOf = bestOf.toString()){
+        console.log("not a number try again");
+        rounds();
+    }  
+    return bestOf;
+}
+
+function counter(){
+   
+    
+}
+
+
 
 
 
