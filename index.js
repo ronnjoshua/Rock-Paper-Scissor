@@ -31,6 +31,7 @@ let againOrExit = prompt("Yes or No? ");
 function getComputerChoice(){
     const playerChoice = prompt("Please pick rock, paper or scissor: ");
     const computerChoice = Math.random();
+
     
     if(computerChoice <= 1/3){
         computerChoiceToStr = "rock";
@@ -107,20 +108,61 @@ function getComputerChoice(){
         computerScore++
     }
     sumOfRounds = playerScore + computerScore;
+    let difference = bestOfRounds - computerScore;
+
     console.log(playerScore);
     console.log(computerScore);
     console.log(drawScore);
     console.log(sumOfRounds);
-    if(sumOfRounds == bestOfRounds && ((computerScore > playerScore))){
+    if((playerScore + computerScore == bestOfRounds) && computerScore > playerScore) {
         alert("You lose.");
         playerScore = 0;
         computerScore = 0;
         drawScore = 0;
         sumOfRounds = 0;
         playRound();
+    }
+
+    else if((playerScore + computerScore == bestOfRounds) && playerScore > computerScore) {
+        alert("You win.");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+        playRound();
+    }
+
+    
+    else if(playerScore == 0 && (difference - computerScore == -1) && (bestOfRounds%2 != 0)){
+        alert("You lose.");
+        console.log("you lose");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+        playRound();
+    }
+    else if(playerScore == 0 && (difference - computerScore == -2) && (bestOfRounds%2 == 0)){
+        alert("You lose.");
+        console.log("you lose");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+        playRound();
+    }
+
+    else if(computerScore == 0 && (difference - playerScore == -1) && (bestOfRounds%2 != 0)){
+        alert("You win");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+       playRound();
 
     }
-    else if(sumOfRounds == bestOfRounds && ((computerScore < playerScore))){
+    
+    else if(computerScore == 0 && (difference - playerScore == -2) && (bestOfRounds%2 == 0)){
         alert("You win");
         playerScore = 0;
         computerScore = 0;
@@ -129,13 +171,14 @@ function getComputerChoice(){
         playRound();
 
     }
+    
     getComputerChoice();
 }
 
 
 function rounds(){
     let bestOf = parseInt(prompt("How many rounds do you want to play? ")); 
-    if(bestOf%2 !=0 && bestOf >= 3){
+    if(bestOf >= 3 && bestOf <= 20){
         console.log(`Best of ${bestOf} rounds`);
     }
     else if(bestOf%2 == 0){
