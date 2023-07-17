@@ -4,17 +4,17 @@ let computerScore = 0;
 let playerScore = 0;
 let drawScore = 0;
 let sumOfRounds = 0;
-let bestOfRounds = rounds();
 
-rounds();
+let bestOfRounds = rounds();
 getComputerChoice();
 
+
+
 function playRound(){
-alert("Do you want to play another round?");
+alert("Do you want to play again?");
 let againOrExit = prompt("Yes or No? ");
     if(againOrExit.toLowerCase() === "yes"){
-        getComputerChoice();
-        playRound(); 
+        bestOfRounds = rounds();
     }
     else if(againOrExit.toLowerCase() === "no"){
         alert("Thank you for playing, see you again next time!");
@@ -22,15 +22,13 @@ let againOrExit = prompt("Yes or No? ");
     else if(againOrExit.toLowerCase() !== "yes" && againOrExit.toLowerCase !== "no"){
         alert("Not a valid option. pick yes or no only.");
         playRound();
-    }
-    
+    }    
+    return againOrExit;
 }
 
 //Get random choice of computer 
 
 function getComputerChoice(){
-
-
     const playerChoice = prompt("Please pick rock, paper or scissor: ");
     const computerChoice = Math.random();
     
@@ -113,8 +111,23 @@ function getComputerChoice(){
     console.log(computerScore);
     console.log(drawScore);
     console.log(sumOfRounds);
-    if(sumOfRounds == bestOfRounds && (computerScore > playerScore)){
-        console.log("okay.");
+    if(sumOfRounds == bestOfRounds && ((computerScore > playerScore))){
+        alert("You lose.");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+        playRound();
+
+    }
+    else if(sumOfRounds == bestOfRounds && ((computerScore < playerScore))){
+        alert("You win");
+        playerScore = 0;
+        computerScore = 0;
+        drawScore = 0;
+        sumOfRounds = 0;
+        playRound();
+
     }
     getComputerChoice();
 }
