@@ -1,9 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <script src="index.js"></script>
-        <title>Rock Paper Scissor</title>
-    </head>
-    <body></body>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Rock Paper Scissor</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <header>Rock Paper Scissor Game</header>
+            <div class="result">
+                <h1>You picked Rock! Computer picked Paper! You lose!</h1>
+            </div>
+            <div class="rps-pick">
+                <h3 class="rps-playerpick">PlayerRPS</h1>
+                <h3 class="rps-computerpick">ComputerRPS</h1>
+            </div>
+
+            <!-- PLAYER CHOICE-->
+        <div class="player-choices">   
+            <div class="rock-container">
+                <button id="rockps-btn" class="rock-btn">
+                    Rock
+                </button>
+                <div class="show-rock">
+                    <img src="images/rock.png" alt="rock">
+                </div>    
+            </div>
+
+            <div class="paper-container">
+                <button id="rpapers-btn" class="paper-btn">
+                    Paper
+                </button>
+                <div class="show-paper">
+                    <img src="images/paper.png" alt="paper">
+                </div>  
+            </div>
+
+            <div class="scissor-container">
+                <button id="rpscissor-btn" class="scissor-btn">
+                    Scissor
+                </button>
+                <div class="show-scissor">
+                    <img src="images/scissor.png" alt="scissor">
+                </div>    
+            </div>
+        </div>
+            <!-- COMPUTER CHOICE -->
+   
+        <div class="score-board">
+            <span id="player-score">0</span>:<span id="computer-score">0</span>
+        </div>
+        <div class="play-exit-btn">
+            <button class="play-btn">PLAY</button>
+            <button class="exit-btn">EXIT</button>
+        </div>
+        <button class="reset-btn">RESET</button>
+    <script src="index.js"></script>
+</body>
 </html>
+
