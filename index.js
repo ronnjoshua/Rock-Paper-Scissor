@@ -9,6 +9,13 @@ const paperBtn_btn = document.getElementById("rpapers-btn");
 const scissorBtn_btn = document.getElementById("rpscissor-btn");
 const resetBtn_btn = document.getElementById("reset-btn");
 const exitBtn_btn = document.getElementById("exit-btn");
+const showRock_div = document.querySelector('.show-rock');
+const showPaper_div = document.querySelector('.show-paper');
+const showScissor_div = document.querySelector('.show-scissor');
+const showRock2_div = document.querySelector('.show-rock2');
+const showPaper2_div = document.querySelector('.show-paper2');
+const showScissor2_div = document.querySelector('.show-scissor2');
+
 
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissor'];
@@ -20,24 +27,24 @@ function win(player, computer) {
     playerScore++;
     playerScore_span.innerText = playerScore;
     computerScore_span.innerText = computerScore;
-    result_h1.innerText = `You chose ${player} and computer chose ${computer}. You won!`;
+    result_h1.innerText = `You chose ${player.toUpperCase()} and computer chose ${computer.toUpperCase()}. You won!`;
 }
 
 function lose(player, computer) {
     computerScore++;
     playerScore_span.innerText = playerScore;
     computerScore_span.innerText = computerScore;
-    result_h1.innerText = `You chose ${player} and computer chose ${computer}. You lose!`;
+    result_h1.innerText = `You chose ${player.toUpperCase()} and computer chose ${computer.toUpperCase()}. You lose!`;
 }
 
 function draw(player, computer) {
-    result_h1.innerText = `You chose ${player} and computer chose ${computer}. It's a draw!`;
+    result_h1.innerText = `You chose ${player.toUpperCase()} and computer chose ${computer.toUpperCase()}. It's a draw!`;
 }
 
 function reset(){
     playerScore_span.innerText = playerScore = 0;
     computerScore_span.innerText = computerScore = 0;
-    result_h1.innerText = "The game has been reset";
+    result_h1.innerText = "Let's Play!";
 }
 
 function game(playerChoice){
@@ -45,18 +52,102 @@ function game(playerChoice){
 
     switch(playerChoice + computerChoice){
         case "rockscissor":
+            showRock_div.style.visibility = 'visible';
+            showScissor2_div.style.visibility = 'visible';
+            
+            showPaper_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
+
+            showScissor_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
+            win(playerChoice, computerChoice);
+            break;
         case "paperrock":
+            showPaper_div.style.visibility = 'visible';
+            showRock2_div.style.visibility = 'visible';
+
+            showRock_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
+
+            showScissor_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+            win(playerChoice, computerChoice);
+            break;
         case "scissorpaper":
+            showScissor_div.style.visibility = 'visible';
+            showPaper2_div.style.visibility = 'visible';
+
+            showPaper_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+
+            showRock_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
             win(playerChoice, computerChoice);
             break;
         case "rockpaper":
+            showRock_div.style.visibility = 'visible';
+            showPaper2_div.style.visibility = 'visible';
+
+            showPaper_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+
+            showScissor_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
+            lose(playerChoice, computerChoice);
+            break;
         case "paperscissor":
+            showPaper_div.style.visibility = 'visible';
+            showScissor2_div.style.visibility = 'visible';
+
+            showScissor_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
+
+            showRock_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
+            lose(playerChoice, computerChoice);
+            break;
         case "scissorrock":
+            showScissor_div.style.visibility = 'visible';
+            showRock2_div.style.visibility = 'visible';
+
+            showPaper_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+
+            showRock_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
             lose(playerChoice, computerChoice);
             break;
         case "rockrock":
+            showRock_div.style.visibility = 'visible';
+            showRock2_div.style.visibility = 'visible';
+
+            showPaper_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
+
+            showScissor_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+            draw(playerChoice, computerChoice);
+            break;
         case "paperpaper":
+            showRock_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
+
+            showPaper_div.style.visibility = 'visible';
+            showPaper2_div.style.visibility = 'visible';
+
+            showScissor_div.style.visibility = 'hidden';
+            showScissor2_div.style.visibility = 'hidden';
+            draw(playerChoice, computerChoice);
+            break;
         case "scissorscissor":
+            showRock_div.style.visibility = 'hidden';
+            showRock2_div.style.visibility = 'hidden';
+
+            showPaper_div.style.visibility = 'hidden';
+            showPaper2_div.style.visibility = 'hidden';
+
+            showScissor_div.style.visibility = 'visible';
+            showScissor2_div.style.visibility = 'visible';
             draw(playerChoice, computerChoice);
             break;
     }
@@ -75,16 +166,20 @@ function main() {
 
     paperBtn_btn.addEventListener('click', function() {
         game('paper');
-
     })
 
     scissorBtn_btn.addEventListener('click', function() {
         game('scissor');
-
     })
 
     resetBtn_btn.addEventListener('click', function() {
         reset();
+        showRock_div.style.visibility = 'hidden';
+        showPaper_div.style.visibility = 'hidden';
+        showScissor_div.style.visibility = 'hidden';
+        showRock2_div.style.visibility = 'hidden';
+        showPaper2_div.style.visibility = 'hidden';
+        showScissor2_div.style.visibility = 'hidden';
     })
 
     exitBtn_btn.addEventListener('click', function() {

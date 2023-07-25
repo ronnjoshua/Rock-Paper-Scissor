@@ -10,11 +10,11 @@
 <body>
     <header>Rock Paper Scissor Game</header>
             <div class="result">
-                <h1>You picked Rock! Computer picked Paper! You lose!</h1>
+                <h1>Let's Play!</h1>
             </div>
             <div class="rps-pick">
-                <h3 class="rps-playerpick">PlayerRPS</h1>
-                <h3 class="rps-computerpick">ComputerRPS</h1>
+                <h3 class="rps-playerpick">Player Pick</h3>
+                <h3 class="rps-computerpick">Computer Pick</h3>
             </div>
 
             <!-- PLAYER CHOICE-->
@@ -47,6 +47,21 @@
             </div>
         </div>
             <!-- COMPUTER CHOICE -->
+            <div>   
+                <div class="show-rock2">
+                    <img src="images/rock2.png" alt="rock">
+                </div>    
+            
+                <div class="show-paper2">
+                    <img src="images/paper2.png" alt="paper">
+                </div>  
+                
+                <div class="show-scissor2">
+                    <img src="images/scissor2.png" alt="scissor">
+                </div>    
+                
+            </div>
+            <!--COMPUTER CHOICE END-->
    
         <div class="score-board">
             <span id="player-score">0</span>:<span id="computer-score">0</span>
@@ -55,7 +70,9 @@
             <button id="play-btn">PLAY</button>
             <button id="exit-btn">EXIT</button>
         </div>
-        <button id="reset-btn">RESET</button>
+        <div id="reset-btn-container">
+            <button id="reset-btn">RESET</button>
+        </div>
     <script src="index.js"></script>
 </body>
 </html>

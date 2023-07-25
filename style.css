@@ -1,11 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Handjet:wght@500&display=swap');
+
 * {
     background-color: #f5f5f5;
-    color: #3f2305 ;
+    color: #3f2305;
+    font-family: 'Handjet', sans-serif;
 }
 
 header {
     display: flex;
     justify-content: center;
+    font-size: 3em;
+    font-weight: bold;
 }
 
 h1 {
@@ -13,9 +18,17 @@ h1 {
     justify-content: center;
 }
 
+h1:before {
+    background-color: red;
+}
+
 h2 {
     display: flex;
     justify-content: center;
+}
+
+h3 {
+    font-size: 50px;
 }
 
 .rps-pick {
@@ -65,9 +78,26 @@ button {
     border-color: white;
 }
 
-.reset-btn {
-    margin-top: 20px;
-    margin-left: 44%;
+
+
+#reset-btn {
+    display: flex;
+    margin: auto;
+    margin-top: 20px ;
+    border-radius: 50%;
+    padding: 10px;
+    border-color: white;
+}
+
+#reset-btn:hover {
+    background-color: #3f2305;
+    color: #dfd7bf;
+    transition: 0.55s;
+}
+
+#reset-btn:active {
+    background-color: #79430a;
+    transition: 0.1s;
 }
 
 #play-btn:hover {
@@ -97,11 +127,18 @@ img {
 }
 
 .show-rock ,.show-paper, .show-scissor {
-    border: solid 3px red;
     width: 10%;
     position: absolute;
     top: 26%;
     left: 35%;
+    visibility: hidden;
+}
+
+.show-rock2 ,.show-paper2, .show-scissor2 {
+    width: 10%;
+    position: absolute;
+    top: 26%;
+    right: 38%;
     visibility: hidden;
 }
 
@@ -121,6 +158,3 @@ img {
     box-shadow: 0 0 10px #25292b;
 }
 
-.reset-btn {
-    border: 3px solid red;
-}
