@@ -7,6 +7,8 @@ const scoreBoard_div = document.querySelector('score-board');
 const rockBtn_btn = document.getElementById("rockps-btn");
 const paperBtn_btn = document.getElementById("rpapers-btn");
 const scissorBtn_btn = document.getElementById("rpscissor-btn");
+const resetBtn_btn = document.getElementById("reset-btn");
+const exitBtn_btn = document.getElementById("exit-btn");
 
 function getComputerChoice() {
     const choices = ['rock', 'paper', 'scissor'];
@@ -17,17 +19,25 @@ function getComputerChoice() {
 function win(player, computer) {
     playerScore++;
     playerScore_span.innerText = playerScore;
+    computerScore_span.innerText = computerScore;
     result_h1.innerText = `You chose ${player} and computer chose ${computer}. You won!`;
 }
 
 function lose(player, computer) {
     computerScore++;
+    playerScore_span.innerText = playerScore;
     computerScore_span.innerText = computerScore;
     result_h1.innerText = `You chose ${player} and computer chose ${computer}. You lose!`;
 }
 
 function draw(player, computer) {
     result_h1.innerText = `You chose ${player} and computer chose ${computer}. It's a draw!`;
+}
+
+function reset(){
+    playerScore_span.innerText = playerScore = 0;
+    computerScore_span.innerText = computerScore = 0;
+    result_h1.innerText = "The game has been reset";
 }
 
 function game(playerChoice){
@@ -53,6 +63,11 @@ function game(playerChoice){
 }
 
 
+function windowClose(){
+    window.opener = self;
+    window.close();
+}
+
 function main() {
     rockBtn_btn.addEventListener ('click', function() {
         game('rock');
@@ -67,7 +82,16 @@ function main() {
         game('scissor');
 
     })
+
+    resetBtn_btn.addEventListener('click', function() {
+        reset();
+    })
+
+    exitBtn_btn.addEventListener('click', function() {
+        windowClose();
+    })
 }
+
 
 main();
 
